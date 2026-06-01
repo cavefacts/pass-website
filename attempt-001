@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pass — A Story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #faf9f6;
+      --bg2: #f2f0eb;
+      --ink: #1a1814;
+      --ink-light: #5a5650;
+      --ink-faint: #9a9490;
+      --accent: #2a5c8f;
+      --accent-hover: #1e4570;
+      --border: #ddd9d0;
+      --max: 720px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Header ─────────────────────────────── */
+    header {
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      padding: 0 1.5rem;
+    }
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .site-title {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    nav a {
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      margin-left: 1.6rem;
+      transition: color 0.15s;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* ── Hero ────────────────────────────────── */
+    .hero {
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+    .hero-inner { max-width: var(--max); margin: 0 auto; }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.6rem, 8vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.4rem;
+    }
+    .hero-tagline {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.18rem;
+      color: var(--ink-light);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.7rem 1.8rem;
+      border-radius: 2px;
+      transition: background 0.15s;
+    }
+    .hero-cta:hover { background: var(--accent-hover); }
+
+    /* ── Main layout ────────────────────────── */
+    .main-wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── Section titles ─────────────────────── */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── About blurb ────────────────────────── */
+    .about-block {
+      margin-bottom: 3.5rem;
+    }
+    .about-block p {
+      color: var(--ink-light);
+      font-size: 1rem;
+      margin-bottom: 0.9rem;
+    }
+    .about-block p:last-child { margin-bottom: 0; }
+
+    /* ── Chapter list ───────────────────────── */
+    .chapter-list {
+      list-style: none;
+    }
+    .chapter-list li {
+      border-bottom: 1px solid var(--border);
+    }
+    .chapter-list li:first-child {
+      border-top: 1px solid var(--border);
+    }
+    .chapter-list a {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.85rem 0.2rem;
+      text-decoration: none;
+      color: var(--ink);
+      transition: background 0.1s;
+    }
+    .chapter-list a:hover {
+      background: var(--bg2);
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      margin: 0 -0.5rem;
+    }
+    .ch-num {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+      min-width: 2.2rem;
+      flex-shrink: 0;
+    }
+    .ch-title {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      flex: 1;
+    }
+    .ch-note {
+      font-size: 0.82rem;
+      color: var(--ink-faint);
+      flex-shrink: 0;
+    }
+
+    /* ── About author ───────────────────────── */
+    #about {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 2px solid var(--border);
+    }
+    #about .about-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 2rem;
+      margin-top: 1.2rem;
+    }
+    .author-name {
+      font-family: 'Lora', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+    }
+    #about p {
+      color: var(--ink-light);
+      font-size: 0.97rem;
+      margin-bottom: 0.8rem;
+    }
+    #about p:last-child { margin-bottom: 0; }
+
+    /* ── Footer ─────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--ink-faint);
+    }
+    footer a { color: var(--ink-faint); text-decoration: underline; }
+
+    /* ── Animations ─────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1        { animation: fadeUp 0.55s ease both; }
+    .hero-tagline   { animation: fadeUp 0.55s 0.1s ease both; }
+    .hero-cta       { animation: fadeUp 0.55s 0.2s ease both; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <a class="site-title" href="#">Pass</a>
+      <nav>
+        <a href="#chapters">Chapters</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">A Story by [Author Name]</p>
+      <h1>Pass</h1>
+      <p class="hero-tagline">
+        Connor Moreton runs the city like it's a puzzle — every wall a question,
+        every rooftop an answer. But some gaps can't be cleared with a jump.
+      </p>
+      <a class="hero-cta" href="#chapters">Start Reading</a>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="main-wrap">
+
+    <!-- About the story -->
+    <div class="about-block" id="story">
+      <p class="section-label">About the Story</p>
+      <p>
+        <em>Pass</em> follows Connor Moreton, a teenager whose world exists
+        between concrete and open sky. Through the discipline of parkour he
+        finds freedom — but the city has its own rules, and Connor is about to
+        learn which ones can be broken.
+      </p>
+      <p>
+        A coming-of-age story about momentum, risk, and what it means to
+        keep moving when everything in your life is trying to slow you down.
+      </p>
+    </div>
+
+    <!-- Chapters -->
+    <div id="chapters">
+      <p class="section-label">Chapters</p>
+      <ul class="chapter-list">
+        <li>
+          <a href="#">
+            <span class="ch-num">1</span>
+            <span class="ch-title">First Step</span>
+            <span class="ch-note">Chapter 1</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="ch-num">2</span>
+            <span class="ch-title">The Rooftop</span>
+            <span class="ch-note">Chapter 2</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="ch-num">3</span>
+            <span class="ch-title">Bad Landing</span>
+            <span class="ch-note">Chapter 3</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="ch-num">4</span>
+            <span class="ch-title">The Gap</span>
+            <span class="ch-note">Chapter 4</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="ch-num">5</span>
+            <span class="ch-title">Flow State</span>
+            <span class="ch-note">Chapter 5</span>
+          </a>
+        </li>
+      </ul>
+      <p style="margin-top:1rem; font-size:0.85rem; color:var(--ink-faint);">
+        More chapters coming soon.
+      </p>
+    </div>
+
+    <!-- About the author -->
+    <div id="about">
+      <p class="section-label">About the Author</p>
+      <div class="about-card">
+        <p class="author-name">[Author Name]</p>
+        <p>
+          [Author Name] is the writer behind <em>Pass</em>. 
+          Write a short bio here — where you're from, what you're into,
+          why you wrote this story.
+        </p>
+        <p>
+          You can reach the author at <a href="mailto:you@example.com">you@example.com</a>.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p><em>Pass</em> &copy; [Author Name] · All rights reserved</p>
+  </footer>
+
+</body>
+</html>
