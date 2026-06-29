@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #474747;
+    color: #d4d4d4;
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#page {
+    max-width: 960px;
+    margin: 0 auto;
+    background-color: #474747;
+    min-height: 100vh;
+}
+
+/* Navigation Bar */
+#nav-bar {
+    background-color: #2a2a2a;
+    padding: 12px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#nav-bar a {
+    color: #eeeeee;
+    text-decoration: none;
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 16px;
+    transition: color 0.2s;
+}
+
+#nav-bar a:hover {
+    color: #ff7722;
+}
+
+#nav-bar a.active {
+    color: #ffffff;
+}
+
+/* Header / Title Area */
+#site-header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    background-color: #474747;
+}
+
+#site-header h1 {
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #d4d4d4;
+    line-height: 1.1;
+    margin-bottom: 0;
+    letter-spacing: 2px;
+}
+
+#site-header .subtitle {
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 22px;
+    color: #999;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 8px;
+}
+
+#site-header .author {
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 18px;
+    color: #999;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* Main Content */
+#content {
+    padding: 30px 60px 60px;
+}
+
+/* Homepage */
+.intro {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-align: center;
+    font-size: 15px;
+    color: #999;
+    line-height: 1.8;
+}
+
+.intro p {
+    margin-bottom: 12px;
+}
+
+/* Dedication */
+.dedication {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+    margin: 30px auto;
+    max-width: 500px;
+    padding: 20px;
+    border-top: 1px solid #666;
+    border-bottom: 1px solid #666;
+}
+
+.dedication p {
+    margin-bottom: 4px;
+}
+
+/* Rules Section */
+.rules {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.rules h2 {
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 24px;
+    letter-spacing: 3px;
+    color: #d4d4d4;
+}
+
+.rules .rule {
+    margin-bottom: 16px;
+}
+
+.rules .rule-number {
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ff7722;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.rules .rule-text {
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 15px;
+    color: #d4d4d4;
+    padding-left: 16px;
+    font-style: italic;
+}
+
+/* Table of Contents */
+.toc {
+    margin: 30px auto;
+    max-width: 700px;
+}
+
+.toc h2 {
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #d4d4d4;
+    border-bottom: 2px solid #ff7722;
+    padding-bottom: 10px;
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+}
+
+.toc li {
+    padding: 8px 0;
+    border-bottom: 1px solid #5a5a5a;
+}
+
+.toc li:last-child {
+    border-bottom: none;
+}
+
+.toc a {
+    color: #ff7722;
+    text-decoration: none;
+    font-size: 17px;
+    transition: color 0.2s;
+}
+
+.toc a:hover {
+    color: #cc5500;
+}
+
+/* Download Section */
+.downloads {
+    float: right;
+    width: 240px;
+    margin: 0 0 20px 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #5a5a5a;
+}
+
+.downloads h3 {
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #d4d4d4;
+}
+
+.downloads a {
+    color: #ff7722;
+    text-decoration: none;
+}
+
+.downloads a:hover {
+    color: #cc5500;
+}
+
+/* Chapter Page */
+.chapter-nav {
+    text-align: center;
+    padding: 16px 0;
+    border-bottom: 2px solid #5a5a5a;
+    margin-bottom: 30px;
+}
+
+.chapter-nav select {
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 14px;
+    padding: 6px 12px;
+    border: 1px solid #666;
+    background: #3a3a3a;
+    color: #d4d4d4;
+    margin: 0 10px;
+}
+
+.chapter-nav a {
+    color: #ff7722;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 8px;
+}
+
+.chapter-nav a:hover {
+    color: #cc5500;
+}
+
+.chapter-nav .disabled {
+    color: #666;
+    pointer-events: none;
+}
+
+.chapter-title {
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 36px;
+    text-align: center;
+    margin: 30px 0 10px;
+    color: #d4d4d4;
+    line-height: 1.3;
+}
+
+.chapter-ornament {
+    text-align: center;
+    font-size: 28px;
+    color: #ff7722;
+    margin: 16px 0 30px;
+}
+
+/* Story Content */
+.story-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.story-content p {
+    margin-bottom: 14px;
+    text-align: justify;
+    text-indent: 0;
+}
+
+.story-content p.center {
+    text-align: center;
+}
+
+.story-content em {
+    font-style: italic;
+}
+
+.story-content strong {
+    font-weight: bold;
+}
+
+.story-content hr {
+    border: none;
+    border-top: 1px solid #666;
+    margin: 30px auto;
+    max-width: 200px;
+}
+
+/* Chapter bottom nav */
+.chapter-nav-bottom {
+    text-align: center;
+    padding: 30px 0;
+    border-top: 2px solid #5a5a5a;
+    margin-top: 40px;
+}
+
+.chapter-nav-bottom a {
+    color: #ff7722;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 8px;
+}
+
+.chapter-nav-bottom a:hover {
+    color: #cc5500;
+}
+
+.chapter-nav-bottom .disabled {
+    color: #666;
+    pointer-events: none;
+}
+
+/* Footer */
+#site-footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 13px;
+    color: #777;
+    border-top: 1px solid #5a5a5a;
+    margin-top: 40px;
+}
+
+#site-footer a {
+    color: #ff7722;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #content {
+        padding: 20px 24px 40px;
+    }
+
+    #site-header h1 {
+        font-size: 42px;
+    }
+
+    #site-header .subtitle {
+        font-size: 16px;
+    }
+
+    .chapter-title {
+        font-size: 26px;
+    }
+
+    .downloads {
+        float: none;
+        width: 100%;
+        margin: 0 0 20px;
+    }
+
+    .story-content p {
+        text-align: left;
+    }
+
+    #nav-bar a {
+        font-size: 11px;
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #site-header h1 {
+        font-size: 32px;
+    }
+
+    .chapter-title {
+        font-size: 22px;
+    }
+
+    #content {
+        padding: 16px 16px 30px;
+    }
+}
