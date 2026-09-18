@@ -42,6 +42,7 @@
     (adminKey ? '  <div class="admin-notice">Admin mode — replies will be tagged as the author. <a href="#" class="admin-exit">Exit admin mode</a></div>' : '') +
     '  <input type="text" name="name" placeholder="Your name" required maxlength="100"' +
     (adminKey ? ' value="Duncan Sabien"' : '') + '>' +
+    '  <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">' +
     '  <textarea name="text" placeholder="Leave a comment…" required maxlength="5000" rows="4"></textarea>' +
     '  <button type="submit">Post Comment</button>' +
     '</form>' +
@@ -167,7 +168,12 @@
     btn.disabled = true;
     btn.textContent = "Posting…";
 
-    var payload = { chapter: chapter, name: nameVal, text: textVal };
+    var payload = {
+      chapter: chapter,
+      name: nameVal,
+      text: textVal,
+      website: form.querySelector('[name="website"]').value,
+    };
     if (adminKey) payload.admin_key = adminKey;
 
     fetch("/api/comments", {

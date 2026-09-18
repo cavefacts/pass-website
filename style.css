@@ -536,6 +536,15 @@ body {
     cursor: not-allowed;
 }
 
+/* Spam trap: kept off-screen so people never fill it in; bots do */
+.comment-form .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
 .comments-list {
     margin-top: 30px;
 }
