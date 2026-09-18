@@ -487,7 +487,8 @@ body {
 }
 
 .comment-form input,
-.comment-form textarea {
+.comment-form textarea,
+.admin-login input {
     display: block;
     width: 100%;
     box-sizing: border-box;
@@ -502,7 +503,8 @@ body {
 }
 
 .comment-form input:focus,
-.comment-form textarea:focus {
+.comment-form textarea:focus,
+.admin-login input:focus {
     outline: none;
     border-color: #ff7722;
 }
@@ -512,7 +514,8 @@ body {
     min-height: 80px;
 }
 
-.comment-form button {
+.comment-form button,
+.admin-login button {
     background: #ff7722;
     color: #fff;
     border: none;
@@ -523,7 +526,8 @@ body {
     font-family: inherit;
 }
 
-.comment-form button:hover {
+.comment-form button:hover,
+.admin-login button:hover {
     background: #e5691f;
 }
 
@@ -631,6 +635,15 @@ body {
     border-radius: 4px;
     font-size: 13px;
     margin-bottom: 10px;
+}
+
+.admin-notice a {
+    color: inherit;
+    margin-left: 6px;
+}
+
+.admin-login {
+    margin-bottom: 24px;
 }
 
 .comment-meta {

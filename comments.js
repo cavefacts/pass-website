@@ -5,9 +5,20 @@
   var chapter = container.getAttribute("data-chapter");
   if (!chapter) return;
 
-  // Check for admin mode via URL param
+  // Admin mode: add ?admin to a page's address and enter the key when asked.
+  // The key is then remembered in this browser, so it never goes in the
+  // address bar (where + and % get altered, and it would sit in history).
+  var KEY_STORAGE = "pass-admin-key";
+  var adminKey = null;
+  try { adminKey = localStorage.getItem(KEY_STORAGE); } catch (_) {}
+
   var params = new URLSearchParams(window.location.search);
-  var adminKey = params.get("admin");
+  var askForKey = params.has("admin") && !adminKey;
+  if (params.has("admin")) {
+    params.delete("admin");
+    var query = params.toString();
+    history.replaceState(null, "", location.pathname + (query ? "?" + query : "") + location.hash);
+  }
 
   // Render PayPal tip + comments UI
   container.innerHTML =
@@ -21,8 +32,14 @@
     '  </a>' +
     '</div>' +
     '<h3>Comments</h3>' +
+    (askForKey
+      ? '<form class="admin-login">' +
+        '  <input type="password" name="key" placeholder="Admin key" required autocomplete="current-password">' +
+        '  <button type="submit">Enter admin mode</button>' +
+        '</form>'
+      : '') +
     '<form class="comment-form">' +
-    (adminKey ? '  <div class="admin-notice">Admin mode — replies will be tagged as the author</div>' : '') +
+    (adminKey ? '  <div class="admin-notice">Admin mode — replies will be tagged as the author. <a href="#" class="admin-exit">Exit admin mode</a></div>' : '') +
     '  <input type="text" name="name" placeholder="Your name" required maxlength="100"' +
     (adminKey ? ' value="Duncan Sabien"' : '') + '>' +
     '  <textarea name="text" placeholder="Leave a comment…" required maxlength="5000" rows="4"></textarea>' +
@@ -32,6 +49,35 @@
 
   var form = container.querySelector(".comment-form");
   var list = container.querySelector(".comments-list");
+
+  var loginForm = container.querySelector(".admin-login");
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      try {
+        localStorage.setItem(KEY_STORAGE, loginForm.querySelector('[name="key"]').value);
+      } catch (_) {
+        alert("This browser won't let the site remember the admin key (private browsing or blocked site data can cause this).");
+        return;
+      }
+      location.reload();
+    });
+  }
+
+  var exitLink = container.querySelector(".admin-exit");
+  if (exitLink) {
+    exitLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      try { localStorage.removeItem(KEY_STORAGE); } catch (_) {}
+      location.reload();
+    });
+  }
+
+  function adminKeyRejected(message) {
+    try { localStorage.removeItem(KEY_STORAGE); } catch (_) {}
+    alert(message + " Please enter the admin key again.");
+    location.search = "?admin";
+  }
 
   function escapeHtml(s) {
     var div = document.createElement("div");
@@ -57,6 +103,7 @@
       method: "DELETE",
     })
       .then(function (r) {
+        if (r.status === 403) return adminKeyRejected("The admin key wasn't accepted.");
         if (!r.ok) throw new Error("Failed to delete");
         el.remove();
       })
@@ -137,6 +184,9 @@
         var noComments = list.querySelector(".no-comments");
         if (noComments) noComments.remove();
         list.appendChild(renderComment(data.comment));
+        if (adminKey && !data.comment.is_author) {
+          adminKeyRejected("The admin key wasn't accepted, so this comment was posted without the Author badge.");
+        }
       })
       .catch(function (err) {
         alert("Error posting comment: " + err.message);
