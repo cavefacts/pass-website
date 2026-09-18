@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Source+Code+Pro:wght@400;600&family=Caveat:wght@400;700&family=Permanent+Marker&display=swap');
 
 * {
     margin: 0;
@@ -392,5 +392,281 @@ body {
 
     #content {
         padding: 16px 16px 30px;
+    }
+}
+
+/* === Special Text Styles === */
+
+/* Epigraph - rooftop flashback dialogues at chapter openings */
+.epigraph {
+    border-left: 3px solid rgba(255, 119, 34, 0.4);
+    padding: 10px 20px;
+    margin: 0 auto 10px;
+    max-width: 650px;
+}
+
+.epigraph .timestamp {
+    font-variant: small-caps;
+    color: #888;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.epigraph p {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #b8b8b8;
+}
+
+/* Text messages / SMS */
+.text-message {
+    font-family: 'Source Code Pro', 'Courier New', monospace;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    border-left: 3px solid #5a5a5a;
+    padding: 6px 14px;
+    margin: 10px 0 10px 20px;
+    max-width: 480px;
+    color: #c8c8c8;
+}
+
+.text-message strong {
+    font-weight: 400;
+}
+
+/* Journal / handwritten entries */
+.journal-entry {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    line-height: 1.5;
+    color: #c4b896;
+    padding: 4px 16px;
+    margin: 6px 0;
+}
+
+.journal-entry em {
+    font-style: normal;
+}
+
+/* Board / whiteboard text */
+.board-text {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 18px;
+    color: #e0d8c8;
+    letter-spacing: 1px;
+}
+
+/* Sign / banner text */
+.sign-text {
+    font-family: 'Permanent Marker', cursive;
+    color: #ff7722;
+}
+
+/* Intercom / PA announcement text */
+.announcement {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Comments section */
+.comments-section {
+    max-width: 700px;
+    margin: 40px auto 0;
+    padding-top: 30px;
+    border-top: 2px solid #5a5a5a;
+}
+
+.comments-section h3 {
+    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
+    font-size: 20px;
+    color: #d4d4d4;
+    margin-bottom: 16px;
+}
+
+.comment-form input,
+.comment-form textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid #5a5a5a;
+    border-radius: 4px;
+    color: #d4d4d4;
+    font-family: inherit;
+    font-size: 15px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+}
+
+.comment-form input:focus,
+.comment-form textarea:focus {
+    outline: none;
+    border-color: #ff7722;
+}
+
+.comment-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.comment-form button {
+    background: #ff7722;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 24px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.comment-form button:hover {
+    background: #e5691f;
+}
+
+.comment-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.comments-list {
+    margin-top: 30px;
+}
+
+.comment {
+    border-left: 3px solid #5a5a5a;
+    padding: 10px 16px;
+    margin-bottom: 16px;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+}
+
+.comment-author {
+    color: #ff7722;
+    font-size: 15px;
+}
+
+.comment-date {
+    color: #888;
+    font-size: 13px;
+}
+
+.comment-body {
+    color: #c0c0c0;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.no-comments {
+    color: #888;
+    font-style: italic;
+}
+
+/* Tip / PayPal button */
+.tip-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tip-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border: 1px solid #6a6a6a;
+    border-radius: 6px;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.tip-button:hover {
+    border-color: #999;
+    color: #d4d4d4;
+}
+
+.paypal-icon {
+    opacity: 0.5;
+}
+
+.tip-button:hover .paypal-icon {
+    opacity: 0.75;
+}
+
+/* Author badge on comments */
+.author-badge {
+    display: inline-block;
+    background: rgba(255, 119, 34, 0.15);
+    color: #ff7722;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.comment-author-reply {
+    border-left-color: #ff7722;
+}
+
+/* Admin controls */
+.admin-notice {
+    background: rgba(255, 119, 34, 0.1);
+    border: 1px solid rgba(255, 119, 34, 0.3);
+    color: #ff7722;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.comment-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-delete {
+    background: none;
+    border: 1px solid #5a5a5a;
+    color: #888;
+    font-size: 16px;
+    line-height: 1;
+    padding: 2px 7px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.comment-delete:hover {
+    border-color: #c44;
+    color: #c44;
+}
+
+@media (max-width: 768px) {
+    .epigraph {
+        padding: 8px 14px;
+    }
+
+    .text-message {
+        margin-left: 10px;
+        max-width: 100%;
+    }
+
+    .journal-entry {
+        font-size: 20px;
+        padding: 4px 10px;
     }
 }
