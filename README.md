@@ -25,7 +25,12 @@ It's plain HTML and CSS with no build step, plus one small serverless function t
 | `comments.js` | Comments section, tip button and author mode; loaded on every reading page |
 | `api/comments.js` | The comments API (a Vercel serverless function) |
 | `package.json` | The database library the API uses; Vercel installs it |
+| `favicon.ico`, `apple-touch-icon.png` | The site icon, for browser tabs and Apple home screens |
+| `og-image.png` | The picture shown when someone shares a link to the site |
+| `tools/make-images.ps1` | Draws those three images. Re-run it after changing their design (Windows only) |
 | `Dockerfile`, `docker-compose.yml` | An old local preview setup. Vercel ignores them, and comments don't work in it |
+
+Every reading page's `<head>` has link-preview tags (a title, description and image) that point at `https://pass-website.vercel.app/og-image.png`. If the site moves to its own domain, update that address on every page.
 
 The chapter pages were generated from the manuscript by a script of Moshe's (`build_site.py`) that isn't in this repo. Edit the HTML directly, or get the script from Moshe first. Regenerating the pages would overwrite any direct edits.
 
@@ -44,11 +49,10 @@ The chapter pages were generated from the manuscript by a script of Moshe's (`bu
 
 - **June 2026:** Moshe built the site with Claude Code. The first version went on GitHub on June 29.
 - **August 2026:** Moshe added comments, the tip button and author mode.
-- **September 2026:** The August version went live with the Neon database. Author mode now asks for the key instead of reading it from the address, because keys containing `+` or `%` broke. The API switched to Neon's own database library, since `@vercel/postgres` is deprecated, and gained spam protection.
+- **September 2026:** The August version went live with the Neon database. Author mode now asks for the key instead of reading it from the address, because keys containing `+` or `%` broke. The API switched to Neon's own database library, since `@vercel/postgres` is deprecated, and gained spam protection. The site got an icon and a link preview image.
 
 ## Not done yet
 
-- There's no favicon, and no description or preview image for when links are shared.
 - `style.css` has styles for a downloads box that no page uses.
 - Deleting a comment sends the admin key in the request address, so it can appear in Vercel's request logs, which only project members can see.
 - The repo is public, so the full text can be downloaded from GitHub. Making it private wouldn't affect the site.
