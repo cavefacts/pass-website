@@ -199,6 +199,12 @@ body {
     color: #cc5500;
 }
 
+.toc-note {
+    margin-top: 16px;
+    font-style: italic;
+    color: #999;
+}
+
 /* Download Section */
 .downloads {
     float: right;
@@ -305,6 +311,21 @@ body {
     border-top: 1px solid #666;
     margin: 30px auto;
     max-width: 200px;
+}
+
+.update-note {
+    max-width: 700px;
+    margin: 30px auto 0;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #5a5a5a;
+    text-align: center;
+    font-style: italic;
+    color: #999;
+}
+
+.update-note p {
+    margin: 0;
 }
 
 /* Chapter bottom nav */

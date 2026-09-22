@@ -19,7 +19,7 @@ It's plain HTML and CSS with no build step, plus one small serverless function t
 | File | What it is |
 | --- | --- |
 | `index.html` | Home page: title, dedication, The Rules and the Prologue |
-| `contents.html`, `foreword.html`, `chapter-1.html` … `chapter-20.html`, `epilogue.html` | The book |
+| `contents.html`, `foreword.html`, `chapter-1.html` | The book, as published so far (see "Soft launch" below) |
 | `prologue.html`, `rules.html` | Old addresses that redirect to the home page |
 | `style.css` | All styling, including the styled passages (epigraphs, text messages, journal entries, signs) |
 | `comments.js` | Comments section, tip button and author mode; loaded on every reading page |
@@ -33,6 +33,10 @@ It's plain HTML and CSS with no build step, plus one small serverless function t
 Every reading page's `<head>` has link-preview tags (a title, description and image) that point at `https://pass-website.vercel.app/og-image.png`. If the site moves to its own domain, update that address on every page.
 
 The chapter pages were generated from the manuscript by a script of Moshe's (`build_site.py`) that isn't in this repo. Edit the HTML directly, or get the script from Moshe first. Regenerating the pages would overwrite any direct edits.
+
+## Soft launch
+
+As of September 2026, only the Foreword, the Rules/Prologue and Chapter 1 are published. `chapter-2.html` through `chapter-20.html` and `epilogue.html` were removed from the repo (they're still in git history) so the site launches with a smaller, complete-feeling slice of the book. `contents.html`'s table of contents and every nav dropdown were trimmed to match, and Chapter 1 ends with a note that more chapters are coming. To publish another chapter: restore its file from git history (or re-add it), add it back to `contents.html` and to the `<select>` in `foreword.html`, `index.html` and every published chapter page, and re-enable the "Next" links that now point past it.
 
 ## Comments
 
