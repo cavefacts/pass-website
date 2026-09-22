@@ -19,6 +19,7 @@ It's plain HTML and CSS with no build step, plus one small serverless function t
 | File | What it is |
 | --- | --- |
 | `index.html` | Home page: title, dedication, The Rules and the Prologue |
+| `rules.png` | "The Rules" hand-lettered graphic shown on the home page, recolored to the site's palette (orange rule numbers, light grey title and text) from a drawing supplied by the site owner |
 | `contents.html`, `foreword.html`, `chapter-1.html` | The book, as published so far (see "Soft launch" below) |
 | `prologue.html`, `rules.html` | Old addresses that redirect to the home page |
 | `style.css` | All styling, including the styled passages (epigraphs, text messages, journal entries, signs) |

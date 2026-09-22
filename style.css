@@ -129,34 +129,10 @@ body {
     border-radius: 4px;
 }
 
-.rules h2 {
-    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
-    font-size: 28px;
-    text-align: center;
-    margin-bottom: 24px;
-    letter-spacing: 3px;
-    color: #d4d4d4;
-}
-
-.rules .rule {
-    margin-bottom: 16px;
-}
-
-.rules .rule-number {
-    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #ff7722;
+.rules-image {
     display: block;
-    margin-bottom: 2px;
-}
-
-.rules .rule-text {
-    font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
-    font-size: 15px;
-    color: #d4d4d4;
-    padding-left: 16px;
-    font-style: italic;
+    width: 100%;
+    height: auto;
 }
 
 /* Table of Contents */
