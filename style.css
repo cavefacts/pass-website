@@ -68,6 +68,11 @@ body {
     letter-spacing: 2px;
 }
 
+#site-header h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
 #site-header .subtitle {
     font-family: 'Book Antiqua', Palatino, 'Palatino Linotype', serif;
     font-size: 22px;
