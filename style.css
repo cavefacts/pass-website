@@ -274,6 +274,15 @@ body {
     text-align: center;
 }
 
+/* Three-dot scene break: one extra line of space above and below */
+.story-content p.scene-break {
+    margin-top: calc(14px + 1.6em);
+    margin-bottom: calc(14px + 1.6em);
+    letter-spacing: 0.8em;
+    /* offset the trailing letter-spacing so the dots stay centered */
+    padding-left: 0.8em;
+}
+
 .story-content em {
     font-style: italic;
 }
