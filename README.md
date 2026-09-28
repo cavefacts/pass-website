@@ -1,12 +1,13 @@
 # Pass website
 
-The reading site for *Pass*, a novel by Duncan Sabien: <https://pass-website.vercel.app>
+The reading site for *Pass*, a novel by Duncan Sabien: <https://passnovel.com> (also still reachable at <https://pass-website.vercel.app>)
 
 It's plain HTML and CSS with no build step, plus one small serverless function that handles reader comments.
 
 ## Where it lives
 
 - **Code:** GitHub, [cavefacts/pass-website](https://github.com/cavefacts/pass-website). Every push to `main` goes live automatically within a minute or two.
+- **Domain:** `passnovel.com`, registered at Squarespace, with its DNS records pointing at Vercel.
 - **Hosting:** Vercel project `pass-website` ([dashboard](https://vercel.com/sophie-ricketts-projects/pass-website)).
 - **Database:** Neon Postgres, connected to the Vercel project from its Storage tab. The comments table sets itself up on first use.
 - **Settings** ([environment variables](https://vercel.com/sophie-ricketts-projects/pass-website/settings/environment-variables)):
@@ -31,7 +32,7 @@ It's plain HTML and CSS with no build step, plus one small serverless function t
 | `tools/make-images.ps1` | Draws those three images. Re-run it after changing their design (Windows only) |
 | `Dockerfile`, `docker-compose.yml` | An old local preview setup. Vercel ignores them, and comments don't work in it |
 
-Every reading page's `<head>` has link-preview tags (a title, description and image) that point at `https://pass-website.vercel.app/og-image.png`. If the site moves to its own domain, update that address on every page.
+Every reading page's `<head>` has link-preview tags (a title, description and image) that point at `https://passnovel.com/og-image.png`. If the domain changes, update that address on every page.
 
 The chapter pages were generated from the manuscript by a script of Moshe's (`build_site.py`) that isn't in this repo. Edit the HTML directly, or get the script from Moshe first. Regenerating the pages would overwrite any direct edits.
 
