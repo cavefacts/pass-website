@@ -471,6 +471,17 @@ body {
     font-style: normal;
 }
 
+/* Conor's handwriting: Moreton, a font made by the author. Other characters keep Caveat. */
+@font-face {
+    font-family: 'Moreton';
+    src: url('fonts/MoretonSmartFont.otf') format('opentype');
+    font-display: swap;
+}
+
+.journal-entry.conor {
+    font-family: 'Moreton', 'Caveat', cursive;
+}
+
 /* Board / whiteboard text */
 .board-text {
     font-family: 'Permanent Marker', cursive;
