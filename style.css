@@ -482,6 +482,16 @@ body {
     font-family: 'Moreton', 'Caveat', cursive;
 }
 
+/* Ms. Palmano's writing on the board: centered, in Permanent Marker. */
+.story-content p.palmano {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #e0d8c8;
+    text-align: center;
+    margin: 24px 0;
+}
+
 /* Board / whiteboard text */
 .board-text {
     font-family: 'Permanent Marker', cursive;
