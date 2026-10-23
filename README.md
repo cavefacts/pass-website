@@ -21,9 +21,9 @@ It's plain HTML and CSS with no build step, plus one small serverless function t
 | --- | --- |
 | `index.html` | Home page: title, dedication, The Rules and the Prologue |
 | `rules.png` | "The Rules" hand-lettered graphic shown on the home page, recolored to the site's palette (orange rule numbers, light grey title and text) from a drawing supplied by the site owner |
-| `contents.html`, `foreword.html`, `chapter-1.html`, `chapter-2.html`, `chapter-3.html` | The book, as published so far (see "Soft launch" below) |
+| `contents.html`, `foreword.html`, `chapter-1.html`, `chapter-2.html`, `chapter-3.html`, `chapter-4.html`, `chapter-5.html` | The book, as published so far (see "Soft launch" below) |
 | `prologue.html`, `rules.html` | Old addresses that redirect to the home page |
-| `style.css` | All styling, including the styled passages (epigraphs, text messages, journal entries, signs, and Ms. Palmano's writing on the board, `class="palmano"`). That writing is centered and in Permanent Marker |
+| `style.css` | All styling, including the styled passages (epigraphs, text messages, journal entries, signs, and Ms. Palmano's writing on the board, `class="palmano"`). That writing is centered and in Permanent Marker; board writing in two columns uses `<div class="palmano palmano-columns">` with one `<span>` per cell. Ashleigh's blocky capitals (`class="ashleigh-capitals"`) show in Architects Daughter |
 | `fonts/MoretonSmartFont.otf` | Moreton, the author's handwriting font, used only for Conor's handwriting (paragraphs with `class="journal-entry conor"`). Other characters' handwritten notes use `class="journal-entry"` alone and show in Caveat |
 | `comments.js` | Comments section, tip button and author mode; loaded on every reading page |
 | `api/comments.js` | The comments API (a Vercel serverless function) |
@@ -39,7 +39,7 @@ The chapter pages were generated from the manuscript by a script of Moshe's (`bu
 
 ## Soft launch
 
-The site soft-launched in September 2026 with only the Foreword, the Rules/Prologue and Chapter 1. Chapters 2 and 3 were added in October 2026, converted from the author's revised Word files rather than restored from git history. `chapter-4.html` through `chapter-20.html` and `epilogue.html` were removed from the repo (they're still in git history) so the site launches with a smaller, complete-feeling slice of the book. `contents.html`'s table of contents and every nav dropdown were trimmed to match, and the last published chapter ends with a note that more chapters are coming (move that note when adding a chapter). To publish another chapter: restore its file from git history (or re-add it), add it back to `contents.html` and to the `<select>` in `foreword.html`, `index.html` and every published chapter page, and re-enable the "Next" links that now point past it. If the chapter has handwritten notes by Conor, add `conor` to those paragraphs' class (`class="journal-entry conor"`) so they show in his font.
+The site soft-launched in September 2026 with only the Foreword, the Rules/Prologue and Chapter 1. Chapters 2 and 3 were added in October 2026, converted from the author's revised Word files rather than restored from git history, and Chapters 4 and 5 followed later that month, converted from the full manuscript (`Pass (for printing).docx`). `chapter-6.html` through `chapter-20.html` and `epilogue.html` were removed from the repo (they're still in git history) so the site launches with a smaller, complete-feeling slice of the book. `contents.html`'s table of contents and every nav dropdown were trimmed to match, and the last published chapter ends with a note that more chapters are coming (move that note when adding a chapter). To publish another chapter: restore its file from git history (or re-add it), add it back to `contents.html` and to the `<select>` in `foreword.html`, `index.html` and every published chapter page, and re-enable the "Next" links that now point past it. If the chapter has handwritten notes by Conor, add `conor` to those paragraphs' class (`class="journal-entry conor"`) so they show in his font.
 
 ## Comments
 

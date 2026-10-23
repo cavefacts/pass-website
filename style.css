@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Source+Code+Pro:wght@400;600&family=Caveat:wght@400;700&family=Permanent+Marker&family=Raleway:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Source+Code+Pro:wght@400;600&family=Caveat:wght@400;700&family=Permanent+Marker&family=Architects+Daughter&family=Raleway:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 
 * {
     margin: 0;
@@ -483,8 +483,29 @@ body {
 }
 
 /* Ms. Palmano's writing on the board: centered, in Permanent Marker. */
-.story-content p.palmano {
+.story-content p.palmano,
+.story-content div.palmano {
     font-family: 'Permanent Marker', cursive;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #e0d8c8;
+    text-align: center;
+    margin: 24px 0;
+}
+
+/* Board writing laid out in two columns (e.g. UNDERSTAND / CHANGE). */
+.story-content div.palmano-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Ashleigh's tight, blocky capitals. */
+.story-content p.ashleigh-capitals {
+    font-family: 'Architects Daughter', cursive;
     font-size: 20px;
     line-height: 1.6;
     color: #e0d8c8;
