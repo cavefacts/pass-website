@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>Pass</title>
+    <link>https://passnovel.com/</link>
+    <atom:link href="https://passnovel.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>New chapters of Pass, a novel by Duncan Sabien, as they're posted.</description>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 Oct 2026 14:07:15 -0500</lastBuildDate>
+    <image>
+        <url>https://passnovel.com/apple-touch-icon.png</url>
+        <title>Pass</title>
+        <link>https://passnovel.com/</link>
+    </image>
+
+    <item>
+        <title>Chapter 5 – Legend</title>
+        <link>https://passnovel.com/chapter-5.html</link>
+        <guid>https://passnovel.com/chapter-5.html</guid>
+        <pubDate>Fri, 23 Oct 2026 14:07:15 -0500</pubDate>
+        <description>Chapter 5 of Pass is now up.</description>
+    </item>
+    <item>
+        <title>Chapter 4 – Judgments</title>
+        <link>https://passnovel.com/chapter-4.html</link>
+        <guid>https://passnovel.com/chapter-4.html</guid>
+        <pubDate>Fri, 23 Oct 2026 14:07:15 -0500</pubDate>
+        <description>Chapter 4 of Pass is now up.</description>
+    </item>
+    <item>
+        <title>Chapter 3 – Consequences</title>
+        <link>https://passnovel.com/chapter-3.html</link>
+        <guid>https://passnovel.com/chapter-3.html</guid>
+        <pubDate>Thu, 15 Oct 2026 22:51:55 -0500</pubDate>
+        <description>Chapter 3 of Pass is now up.</description>
+    </item>
+    <item>
+        <title>Chapter 2 – Methods</title>
+        <link>https://passnovel.com/chapter-2.html</link>
+        <guid>https://passnovel.com/chapter-2.html</guid>
+        <pubDate>Thu, 08 Oct 2026 17:37:55 -0500</pubDate>
+        <description>Chapter 2 of Pass is now up.</description>
+    </item>
+    <item>
+        <title>Chapter 1 – Confessions</title>
+        <link>https://passnovel.com/chapter-1.html</link>
+        <guid>https://passnovel.com/chapter-1.html</guid>
+        <pubDate>Mon, 21 Sep 2026 21:32:30 -0500</pubDate>
+        <description>Chapter 1 of Pass is now up.</description>
+    </item>
+    <item>
+        <title>The Rules / Prologue – Binder’s Gap</title>
+        <link>https://passnovel.com/</link>
+        <guid>https://passnovel.com/</guid>
+        <pubDate>Mon, 21 Sep 2026 21:32:30 -0500</pubDate>
+        <description>The Rules and the Prologue of Pass are now up.</description>
+    </item>
+    <item>
+        <title>Foreword</title>
+        <link>https://passnovel.com/foreword.html</link>
+        <guid>https://passnovel.com/foreword.html</guid>
+        <pubDate>Mon, 21 Sep 2026 21:32:30 -0500</pubDate>
+        <description>The Foreword to Pass is now up.</description>
+    </item>
+</channel>
+</rss>
