@@ -6,13 +6,34 @@
     <atom:link href="https://passnovel.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>New chapters of Pass, a novel by Duncan Sabien, as they're posted.</description>
     <language>en</language>
-    <lastBuildDate>Fri, 23 Oct 2026 14:07:15 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 20:51:04 -0500</lastBuildDate>
     <image>
         <url>https://passnovel.com/apple-touch-icon.png</url>
         <title>Pass</title>
         <link>https://passnovel.com/</link>
     </image>
 
+    <item>
+        <title>Chapter 8 – Attrition</title>
+        <link>https://passnovel.com/chapter-8.html</link>
+        <guid>https://passnovel.com/chapter-8.html</guid>
+        <pubDate>Thu, 29 Oct 2026 20:51:04 -0500</pubDate>
+        <description>Chapter 8 of Pass is now up.</description>
+    </item>
+    <item>
+        <title>Chapter 7 – Secrets</title>
+        <link>https://passnovel.com/chapter-7.html</link>
+        <guid>https://passnovel.com/chapter-7.html</guid>
+        <pubDate>Thu, 29 Oct 2026 20:51:04 -0500</pubDate>
+        <description>Chapter 7 of Pass is now up.</description>
+    </item>
+    <item>
+        <title>Chapter 6 – Plans</title>
+        <link>https://passnovel.com/chapter-6.html</link>
+        <guid>https://passnovel.com/chapter-6.html</guid>
+        <pubDate>Thu, 29 Oct 2026 20:51:04 -0500</pubDate>
+        <description>Chapter 6 of Pass is now up.</description>
+    </item>
     <item>
         <title>Chapter 5 – Legend</title>
         <link>https://passnovel.com/chapter-5.html</link>
