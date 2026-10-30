@@ -423,6 +423,10 @@ a:hover {
     #content {
         padding: 16px 16px 30px;
     }
+
+    #nav-bar a {
+        padding: 8px 6px;
+    }
 }
 
 /* === Special Text Styles === */
