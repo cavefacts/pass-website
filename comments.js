@@ -99,23 +99,28 @@
   }
 
   function deleteComment(id, el) {
-    if (!confirm("Delete this comment?")) return;
+    if (!confirm("Delete this comment? Any replies to it will stay.")) return;
     fetch("/api/comments?id=" + id + "&admin_key=" + encodeURIComponent(adminKey), {
       method: "DELETE",
     })
       .then(function (r) {
         if (r.status === 403) return adminKeyRejected("The admin key wasn't accepted.");
         if (!r.ok) throw new Error("Failed to delete");
-        el.remove();
+        // Its replies move up a level on the server, so redraw the whole list.
+        loadComments();
       })
       .catch(function (err) {
         alert("Error: " + err.message);
       });
   }
 
-  function renderComment(c) {
+  // Replies are indented up to this many levels. Replies to the most deeply
+  // indented comments line up with them, labelled with who they answer.
+  var MAX_DEPTH = 3;
+
+  function renderComment(c, depth, replyingTo) {
     var div = document.createElement("div");
-    div.className = "comment" + (c.is_author ? " comment-author-reply" : "");
+    div.className = "comment" + (c.is_author ? " comment-author-reply" : "") + (depth > 0 ? " comment-reply" : "");
     var authorBadge = c.is_author ? ' <span class="author-badge">Author</span>' : "";
     var deleteBtn = adminKey
       ? ' <button class="comment-delete" title="Delete comment">&times;</button>'
@@ -128,7 +133,10 @@
       deleteBtn +
       "  </span>" +
       "</div>" +
-      '<div class="comment-body">' + escapeHtml(c.comment_text).replace(/\n/g, "<br>") + "</div>";
+      (replyingTo ? '<div class="comment-replying-to">Replying to ' + escapeHtml(replyingTo) + "</div>" : "") +
+      '<div class="comment-body">' + escapeHtml(c.comment_text).replace(/\n/g, "<br>") + "</div>" +
+      '<div class="comment-actions"><button type="button" class="comment-reply-button">Reply</button></div>' +
+      '<div class="comment-replies"></div>';
 
     if (adminKey) {
       var btn = div.querySelector(".comment-delete");
@@ -138,7 +146,23 @@
         });
       }
     }
+    div.querySelector(".comment-reply-button").addEventListener("click", function () {
+      openReplyForm(c, div);
+    });
     return div;
+  }
+
+  // Draws a comment and, beneath it, its replies, oldest first.
+  function renderThread(c, depth, into, childrenOf, replyingTo) {
+    var el = renderComment(c, depth, replyingTo);
+    into.appendChild(el);
+    (childrenOf[c.id] || []).forEach(function (child) {
+      if (depth < MAX_DEPTH) {
+        renderThread(child, depth + 1, el.querySelector(".comment-replies"), childrenOf, null);
+      } else {
+        renderThread(child, depth, into, childrenOf, c.author_name);
+      }
+    });
   }
 
   function loadComments() {
@@ -150,8 +174,19 @@
           list.innerHTML = '<p class="no-comments">No comments yet. Be the first!</p>';
           return;
         }
+        var ids = {};
+        var childrenOf = {};
+        var topLevel = [];
+        data.comments.forEach(function (c) { ids[c.id] = true; });
         data.comments.forEach(function (c) {
-          list.appendChild(renderComment(c));
+          if (c.parent_id && ids[c.parent_id]) {
+            (childrenOf[c.parent_id] = childrenOf[c.parent_id] || []).push(c);
+          } else {
+            topLevel.push(c);
+          }
+        });
+        topLevel.forEach(function (c) {
+          renderThread(c, 0, list, childrenOf, null);
         });
       })
       .catch(function () {
@@ -159,21 +194,21 @@
       });
   }
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var btn = form.querySelector("button");
-    var nameVal = form.querySelector('[name="name"]').value;
-    var textVal = form.querySelector('[name="text"]').value;
+  // Sends a comment from either the main form or a reply form.
+  function postComment(fromForm, parentId, onPosted) {
+    var btn = fromForm.querySelector('button[type="submit"]');
+    var btnLabel = btn.textContent;
 
     btn.disabled = true;
     btn.textContent = "Posting…";
 
     var payload = {
       chapter: chapter,
-      name: nameVal,
-      text: textVal,
-      website: form.querySelector('[name="website"]').value,
+      name: fromForm.querySelector('[name="name"]').value,
+      text: fromForm.querySelector('[name="text"]').value,
+      website: fromForm.querySelector('[name="website"]').value,
     };
+    if (parentId) payload.parent_id = parentId;
     if (adminKey) payload.admin_key = adminKey;
 
     fetch("/api/comments", {
@@ -186,10 +221,8 @@
         return r.json();
       })
       .then(function (data) {
-        form.querySelector('[name="text"]').value = "";
-        var noComments = list.querySelector(".no-comments");
-        if (noComments) noComments.remove();
-        list.appendChild(renderComment(data.comment));
+        fromForm.querySelector('[name="text"]').value = "";
+        onPosted(data.comment);
         if (adminKey && !data.comment.is_author) {
           adminKeyRejected("The admin key wasn't accepted, so this comment was posted without the Author badge.");
         }
@@ -199,8 +232,54 @@
       })
       .finally(function () {
         btn.disabled = false;
-        btn.textContent = "Post Comment";
+        btn.textContent = btnLabel;
       });
+  }
+
+  // Only one reply form is open at a time; it sits under the comment it answers.
+  function openReplyForm(c, commentEl) {
+    var open = list.querySelector(".reply-form");
+    if (open) {
+      var openFor = open.getAttribute("data-parent");
+      open.remove();
+      if (openFor === String(c.id)) return;
+    }
+
+    var replyForm = document.createElement("form");
+    replyForm.className = "comment-form reply-form";
+    replyForm.setAttribute("data-parent", c.id);
+    replyForm.innerHTML =
+      '  <input type="text" name="name" placeholder="Your name" required maxlength="100">' +
+      '  <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      '  <textarea name="text" placeholder="Reply to ' + escapeHtml(c.author_name) + '…" required maxlength="5000" rows="3"></textarea>' +
+      '  <button type="submit">Post Reply</button>' +
+      '  <button type="button" class="reply-cancel">Cancel</button>';
+    // Start with whatever name was typed in the main form.
+    replyForm.querySelector('[name="name"]').value = form.querySelector('[name="name"]').value;
+
+    replyForm.querySelector(".reply-cancel").addEventListener("click", function () {
+      replyForm.remove();
+    });
+    replyForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      form.querySelector('[name="name"]').value = replyForm.querySelector('[name="name"]').value;
+      postComment(replyForm, c.id, function () {
+        loadComments();
+      });
+    });
+
+    commentEl.querySelector(".comment-actions").after(replyForm);
+    var nameField = replyForm.querySelector('[name="name"]');
+    (nameField.value ? replyForm.querySelector("textarea") : nameField).focus();
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    postComment(form, null, function (comment) {
+      var noComments = list.querySelector(".no-comments");
+      if (noComments) noComments.remove();
+      list.appendChild(renderComment(comment, 0, null));
+    });
   });
 
   loadComments();

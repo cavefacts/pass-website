@@ -646,6 +646,62 @@ body {
     font-style: italic;
 }
 
+/* Replies: each level is indented inside the comment it answers */
+.comment-replies {
+    margin-left: 4px;
+}
+
+.comment-replies:not(:empty) {
+    margin-top: 14px;
+}
+
+.comment-reply:last-child {
+    margin-bottom: 0;
+}
+
+.comment-replying-to {
+    color: #888;
+    font-size: 13px;
+    font-style: italic;
+    margin-bottom: 4px;
+}
+
+.comment-actions {
+    margin-top: 6px;
+}
+
+.comment-reply-button,
+.reply-form .reply-cancel {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #888;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.comment-reply-button:hover,
+.reply-form .reply-cancel:hover {
+    background: none;
+    color: #ff7722;
+}
+
+.reply-form {
+    margin-top: 12px;
+}
+
+.reply-form .reply-cancel {
+    margin-left: 14px;
+}
+
+@media (max-width: 768px) {
+    .comment-replies .comment {
+        padding-right: 0;
+        padding-left: 12px;
+    }
+}
+
 /* Tip / PayPal button */
 .tip-section {
     text-align: center;

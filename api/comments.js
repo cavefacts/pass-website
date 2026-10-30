@@ -30,6 +30,8 @@ function ensureTable() {
       `;
       await sql`ALTER TABLE comments ADD COLUMN IF NOT EXISTS is_author BOOLEAN DEFAULT FALSE`;
       await sql`ALTER TABLE comments ADD COLUMN IF NOT EXISTS ip_hash VARCHAR(64)`;
+      // Replies point at the comment they answer; top-level comments leave it empty.
+      await sql`ALTER TABLE comments ADD COLUMN IF NOT EXISTS parent_id INTEGER`;
     })().catch((err) => {
       tableReady = null;
       throw err;
@@ -76,7 +78,7 @@ module.exports = async function handler(req, res) {
       }
 
       const rows = await sql`
-        SELECT id, author_name, comment_text, is_author, created_at
+        SELECT id, parent_id, author_name, comment_text, is_author, created_at
         FROM comments
         WHERE chapter_slug = ${chapter}
         ORDER BY created_at ASC
@@ -86,7 +88,7 @@ module.exports = async function handler(req, res) {
     }
 
     if (req.method === "POST") {
-      const { chapter, name, text, admin_key, website } = req.body || {};
+      const { chapter, name, text, admin_key, website, parent_id } = req.body || {};
 
       if (!chapter || !/^[a-z0-9-]+$/.test(chapter)) {
         return res.status(400).json({ error: "Invalid chapter slug" });
@@ -100,6 +102,20 @@ module.exports = async function handler(req, res) {
       // A hidden form field that people never see but form-filling bots fill in.
       if (website) {
         return res.status(400).json({ error: "Comment rejected as possible spam" });
+      }
+
+      let parentId = null;
+      if (parent_id !== undefined && parent_id !== null && parent_id !== "") {
+        if (!/^\d+$/.test(String(parent_id))) {
+          return res.status(400).json({ error: "Invalid reply" });
+        }
+        const [parent] = await sql`
+          SELECT id FROM comments WHERE id = ${parent_id} AND chapter_slug = ${chapter}
+        `;
+        if (!parent) {
+          return res.status(400).json({ error: "The comment you're replying to no longer exists" });
+        }
+        parentId = parent.id;
       }
 
       const authorFlag = isAdmin(admin_key);
@@ -126,9 +142,9 @@ module.exports = async function handler(req, res) {
       }
 
       const rows = await sql`
-        INSERT INTO comments (chapter_slug, author_name, comment_text, is_author, ip_hash)
-        VALUES (${chapter}, ${name.trim()}, ${text.trim()}, ${authorFlag}, ${ipHash})
-        RETURNING id, author_name, comment_text, is_author, created_at
+        INSERT INTO comments (chapter_slug, parent_id, author_name, comment_text, is_author, ip_hash)
+        VALUES (${chapter}, ${parentId}, ${name.trim()}, ${text.trim()}, ${authorFlag}, ${ipHash})
+        RETURNING id, parent_id, author_name, comment_text, is_author, created_at
       `;
 
       return res.status(201).json({ comment: rows[0] });
@@ -148,7 +164,11 @@ module.exports = async function handler(req, res) {
         return res.status(400).json({ error: "Comment ID required" });
       }
 
-      await sql`DELETE FROM comments WHERE id = ${commentId}`;
+      // Replies to a deleted comment move up a level instead of disappearing with it.
+      const [gone] = await sql`DELETE FROM comments WHERE id = ${commentId} RETURNING parent_id`;
+      if (gone) {
+        await sql`UPDATE comments SET parent_id = ${gone.parent_id} WHERE parent_id = ${commentId}`;
+      }
       return res.status(200).json({ deleted: true });
     }
 

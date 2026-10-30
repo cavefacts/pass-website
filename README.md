@@ -45,6 +45,7 @@ The site soft-launched in September 2026 with only the Foreword, the Rules/Prolo
 ## Comments
 
 - Each reading page has a `<div class="comments-section" data-chapter="...">`, which `comments.js` fills in.
+- **Replies:** every comment has a Reply link. Replies are indented up to three levels; replies deeper than that line up with the third level and say who they're answering. Each reply stores the comment it answers in the `parent_id` column, which the API adds to the table by itself (existing comments are untouched and stay top-level). Deleting a comment keeps its replies and moves them up a level.
 - **Author mode:** add `?admin` to the end of a page's address and enter the admin key. The browser remembers it until "Exit admin mode" is clicked. The author's comments get an "Author" badge, and the author can delete any comment.
 - **Spam protection** (applies to readers, not the author):
   - a hidden field that only bots fill in;
