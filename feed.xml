@@ -6,13 +6,48 @@
     <atom:link href="https://passnovel.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>New chapters of Pass, a novel by Duncan Sabien, as they're posted.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 29 Oct 2026 20:51:04 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 01:04:03 -0600</lastBuildDate>
     <image>
         <url>https://passnovel.com/apple-touch-icon.png</url>
         <title>Pass</title>
         <link>https://passnovel.com/</link>
     </image>
 
+    <item>
+        <title>Chapter 13 – Tapestry</title>
+        <link>https://passnovel.com/chapter-13.html</link>
+        <guid>https://passnovel.com/chapter-13.html</guid>
+        <pubDate>Fri, 06 Nov 2026 01:04:03 -0600</pubDate>
+        <description>Chapter 13 of Pass is now up.</description>
+    </item>
+    <item>
+        <title>Chapter 12 – Stakes</title>
+        <link>https://passnovel.com/chapter-12.html</link>
+        <guid>https://passnovel.com/chapter-12.html</guid>
+        <pubDate>Fri, 06 Nov 2026 01:04:03 -0600</pubDate>
+        <description>Chapter 12 of Pass is now up.</description>
+    </item>
+    <item>
+        <title>Chapter 11 – Cracks</title>
+        <link>https://passnovel.com/chapter-11.html</link>
+        <guid>https://passnovel.com/chapter-11.html</guid>
+        <pubDate>Fri, 06 Nov 2026 01:04:03 -0600</pubDate>
+        <description>Chapter 11 of Pass is now up.</description>
+    </item>
+    <item>
+        <title>Chapter 10 – Sonder</title>
+        <link>https://passnovel.com/chapter-10.html</link>
+        <guid>https://passnovel.com/chapter-10.html</guid>
+        <pubDate>Fri, 06 Nov 2026 01:04:03 -0600</pubDate>
+        <description>Chapter 10 of Pass is now up.</description>
+    </item>
+    <item>
+        <title>Chapter 9 – Glass</title>
+        <link>https://passnovel.com/chapter-9.html</link>
+        <guid>https://passnovel.com/chapter-9.html</guid>
+        <pubDate>Fri, 06 Nov 2026 01:04:03 -0600</pubDate>
+        <description>Chapter 9 of Pass is now up.</description>
+    </item>
     <item>
         <title>Chapter 8 – Attrition</title>
         <link>https://passnovel.com/chapter-8.html</link>

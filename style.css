@@ -470,6 +470,76 @@ a:hover {
     font-weight: 400;
 }
 
+/* Text-message conversations as chat bubbles: <div class="texts">, one <p class="in">
+   (received, on the left) or <p class="out"> (sent by Conor, on the right) per message. */
+.story-content .texts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 22px 0;
+}
+
+.story-content .texts p {
+    font-family: 'Raleway', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.45;
+    text-align: left;
+    max-width: 78%;
+    margin: 0;
+    padding: 7px 13px;
+    border-radius: 16px;
+    color: #e4e4e4;
+}
+
+.story-content .texts p.in {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.story-content .texts p.out {
+    align-self: flex-end;
+    background: rgba(255, 119, 34, 0.22);
+    border: 1px solid rgba(255, 119, 34, 0.4);
+}
+
+/* The smiley face in a couple of texts */
+.story-content img.emoji {
+    height: 1.1em;
+    width: 1.1em;
+    vertical-align: -0.2em;
+}
+
+/* Underlined words (in handwritten notes) and crossed-out words */
+.story-content u {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+/* A handwritten bulleted list, e.g. Conor's list of ideas: hanging indent after the bullet */
+.journal-entry.list-item {
+    padding-left: 36px;
+    text-indent: -20px;
+    margin: 2px 0;
+}
+
+/* The coupon, printed in a hand-drawn style */
+.story-content p.coupon {
+    font-family: 'Architects Daughter', cursive;
+    font-weight: bold;
+    font-size: 19px;
+    color: #e0d8c8;
+    text-align: center;
+    margin: 24px 0;
+}
+
+/* A worked math equation, set apart and centered */
+.story-content p.math {
+    font-family: 'Raleway', 'Helvetica Neue', Arial, sans-serif;
+    text-align: center;
+    margin: 24px 0;
+}
+
 /* Journal / handwritten entries */
 .journal-entry {
     font-family: 'Caveat', cursive;
