@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Source+Code+Pro:wght@400;600&family=Caveat:wght@400;700&family=Permanent+Marker&family=Architects+Daughter&family=Just+Me+Again+Down+Here&family=Meddon&family=Raleway:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Source+Code+Pro:wght@400;600&family=Caveat:wght@400;700&family=Permanent+Marker&family=Architects+Daughter&family=Meddon&family=Raleway:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 
 * {
     margin: 0;
@@ -565,9 +565,16 @@ a:hover {
     font-family: 'Moreton', 'Caveat', cursive;
 }
 
-/* Conor writing awkwardly with his other hand (Chapters 17 and 18): a rough scrawl. */
+/* Conor writing awkwardly with his wrong (right) hand (Chapters 17 and 18): I Am The Crayon Master
+   by Alice Butler, from dafont.com, where it is listed as 100% free. */
+@font-face {
+    font-family: 'IAmTheCrayonMaster';
+    src: url('fonts/IAmTheCrayonMaster.ttf') format('truetype');
+    font-display: swap;
+}
+
 .journal-entry.scrawl {
-    font-family: 'Just Me Again Down Here', 'Caveat', cursive;
+    font-family: 'IAmTheCrayonMaster', 'Caveat', cursive;
     font-size: 26px;
     letter-spacing: 0.5px;
 }
