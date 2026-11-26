@@ -189,12 +189,6 @@ a:hover {
     color: #cc5500;
 }
 
-.toc-note {
-    margin-top: 16px;
-    font-style: italic;
-    color: #999;
-}
-
 /* Download Section */
 .downloads {
     float: right;
@@ -320,21 +314,6 @@ a:hover {
     border-top: 1px solid #666;
     margin: 30px auto;
     max-width: 200px;
-}
-
-.update-note {
-    max-width: 700px;
-    margin: 30px auto 0;
-    padding: 16px 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid #5a5a5a;
-    text-align: center;
-    font-style: italic;
-    color: #999;
-}
-
-.update-note p {
-    margin: 0;
 }
 
 /* Chapter bottom nav */
@@ -565,7 +544,7 @@ a:hover {
     font-family: 'Moreton', 'Caveat', cursive;
 }
 
-/* Conor writing awkwardly with his wrong (right) hand (Chapters 17 and 18): I Am The Crayon Master
+/* Conor writing awkwardly with his wrong (right) hand (Chapters 17, 18 and 21): I Am The Crayon Master
    by Alice Butler, from dafont.com, where it is listed as 100% free. */
 @font-face {
     font-family: 'IAmTheCrayonMaster';
